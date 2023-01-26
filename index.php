@@ -14,7 +14,11 @@
             <input type="text" name="numberOfCharacters">
             <button>Generate password</button>
 
-
+            <?php
+            if (isset($_GET['numberOfCharacters'])) {
+                echo "<h1> {$_GET['numberOfCharacters']} </h1>";
+            }
+            ?>
         </form>
     </main>
 </body>
