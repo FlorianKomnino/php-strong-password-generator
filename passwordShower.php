@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 $number_validation_regex = "/^\\d+$/";
 $characters = "!abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,/';#][=-?><~@:}{+_)(*&^%1234567890";
 $generatedPassword = "";
@@ -16,25 +14,19 @@ $charactersLength = strlen($characters);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>php-strong-password-generator</title>
+    <title>Your Generated Password</title>
 </head>
 
 <body>
-    <main>
-        <form action="./passwordShower.php" method="GET">
-            <input type="text" name="numberOfCharacters">
-            <button>Generate password</button>
-        </form>
+    <h1>
+        <?php
 
-        <h1>
+        include_once "./functions.php";
 
-            <?php
+        echo $_SESSION['generatedPasswordInDb'];
 
-            include_once "./functions.php";
-
-            ?>
-        </h1>
-    </main>
+        ?>
+    </h1>
 </body>
 
 </html>

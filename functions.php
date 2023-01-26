@@ -11,7 +11,7 @@ if (isset($_GET['numberOfCharacters']) && preg_match($number_validation_regex, $
     while (strlen($generatedPassword) <  $_GET['numberOfCharacters']) {
         $generatedPassword = $generatedPassword . "{$characters[(getRandomNumber(0,$charactersLength))]}";
     }
-    echo $generatedPassword;
+    $_SESSION['generatedPasswordInDb'] = $generatedPassword;
 } elseif (isset($_GET['numberOfCharacters']) && !preg_match($number_validation_regex, $_GET['numberOfCharacters'])) {
     echo "<h1> Devi inserire un numero corretto. </h1>";
 }
