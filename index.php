@@ -21,7 +21,7 @@ $charactersLength = strlen($characters);
 
 <body>
     <main>
-        <form action="./passwordShower.php" method="GET">
+        <form action="" method="GET">
             <input type="text" name="numberOfCharacters">
             <button>Generate password</button>
         </form>
@@ -31,7 +31,9 @@ $charactersLength = strlen($characters);
             <?php
 
             include_once "./functions.php";
-
+            if (isset($_GET['numberOfCharacters']) && preg_match($number_validation_regex, $_GET['numberOfCharacters'])) {
+                header('location: ./passwordShower.php');
+            }
             ?>
         </h1>
     </main>

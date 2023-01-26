@@ -1,9 +1,6 @@
 <?php
 session_start();
-$number_validation_regex = "/^\\d+$/";
-$characters = "!abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,/';#][=-?><~@:}{+_)(*&^%1234567890";
-$generatedPassword = "";
-$charactersLength = strlen($characters);
+
 ?>
 
 
@@ -20,8 +17,6 @@ $charactersLength = strlen($characters);
 <body>
     <h1>
         <?php
-
-        include_once "./functions.php";
 
         echo $_SESSION['generatedPasswordInDb'];
 
