@@ -15,12 +15,21 @@
             <button>Generate password</button>
 
             <?php
+            $characters = "!abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,/';#][=-?><~@:}{+_)(*&^%1234567890";
             $number_validation_regex = "/^\\d+$/";
+            function getRandomNumber($min, $max)
+            {
 
+                return random_int($min, $max);
+            }
             if (isset($_GET['numberOfCharacters']) && preg_match($number_validation_regex, $_GET['numberOfCharacters'])) {
-                echo "<h1> {$_GET['numberOfCharacters']} </h1>";
+                $generatedPassword = "";
+                for ($i = 0; $i < $_GET['numberOfCharacters']; $i++) {
+                    $generatedPassword = $generatedPassword . "{$characters[(getRandomNumber(0, 88))]}";
+                }
+                echo $generatedPassword;
             } elseif (isset($_GET['numberOfCharacters']) && !preg_match($number_validation_regex, $_GET['numberOfCharacters'])) {
-                echo "<h1> Devi inserire un numero valido </h1>";
+                echo "<h1> Devi inserire un numero corretto. </h1>";
             }
 
             ?>
