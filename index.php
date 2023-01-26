@@ -15,9 +15,14 @@
             <button>Generate password</button>
 
             <?php
-            if (isset($_GET['numberOfCharacters'])) {
+            $number_validation_regex = "/^\\d+$/";
+
+            if (isset($_GET['numberOfCharacters']) && preg_match($number_validation_regex, $_GET['numberOfCharacters'])) {
                 echo "<h1> {$_GET['numberOfCharacters']} </h1>";
+            } elseif (isset($_GET['numberOfCharacters']) && !preg_match($number_validation_regex, $_GET['numberOfCharacters'])) {
+                echo "<h1> Devi inserire un numero valido </h1>";
             }
+
             ?>
         </form>
     </main>
