@@ -29,10 +29,11 @@ $generatedPassword = "";
         <h1>
 
             <?php
+            include_once "./functions.php";
 
             if (isset($_GET['numberOfCharacters']) && preg_match($number_validation_regex, $_GET['numberOfCharacters'])) {
                 for ($i = 0; $i < $_GET['numberOfCharacters']; $i++) {
-                    $generatedPassword = $generatedPassword . "{$characters[($_SESSION['getRundomNumber_0_88'])]}";
+                    $generatedPassword = $generatedPassword . "{$characters[(getRandomNumber(0, 88))]}";
                 }
                 echo $generatedPassword;
             } elseif (isset($_GET['numberOfCharacters']) && !preg_match($number_validation_regex, $_GET['numberOfCharacters'])) {
