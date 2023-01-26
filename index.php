@@ -5,7 +5,7 @@ session_start();
 $number_validation_regex = "/^\\d+$/";
 $characters = "!abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,/';#][=-?><~@:}{+_)(*&^%1234567890";
 $generatedPassword = "";
-
+$charactersLength = strlen($characters);
 ?>
 
 
@@ -33,7 +33,7 @@ $generatedPassword = "";
 
             if (isset($_GET['numberOfCharacters']) && preg_match($number_validation_regex, $_GET['numberOfCharacters'])) {
                 for ($i = 0; $i < $_GET['numberOfCharacters']; $i++) {
-                    $generatedPassword = $generatedPassword . "{$characters[(getRandomNumber(0, 88))]}";
+                    $generatedPassword = $generatedPassword . "{$characters[(getRandomNumber(0,$charactersLength))]}";
                 }
                 echo $generatedPassword;
             } elseif (isset($_GET['numberOfCharacters']) && !preg_match($number_validation_regex, $_GET['numberOfCharacters'])) {
