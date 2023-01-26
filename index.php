@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+$number_validation_regex = "/^\\d+$/";
+$characters = "!abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,/';#][=-?><~@:}{+_)(*&^%1234567890";
+$generatedPassword = "";
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,19 +24,15 @@
         <form action="" method="GET">
             <input type="text" name="numberOfCharacters">
             <button>Generate password</button>
+        </form>
+
+        <h1>
 
             <?php
-            $characters = "!abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,/';#][=-?><~@:}{+_)(*&^%1234567890";
-            $number_validation_regex = "/^\\d+$/";
-            function getRandomNumber($min, $max)
-            {
 
-                return random_int($min, $max);
-            }
             if (isset($_GET['numberOfCharacters']) && preg_match($number_validation_regex, $_GET['numberOfCharacters'])) {
-                $generatedPassword = "";
                 for ($i = 0; $i < $_GET['numberOfCharacters']; $i++) {
-                    $generatedPassword = $generatedPassword . "{$characters[(getRandomNumber(0, 88))]}";
+                    $generatedPassword = $generatedPassword . "{$characters[($_SESSION['getRundomNumber_0_88'])]}";
                 }
                 echo $generatedPassword;
             } elseif (isset($_GET['numberOfCharacters']) && !preg_match($number_validation_regex, $_GET['numberOfCharacters'])) {
@@ -33,7 +40,7 @@
             }
 
             ?>
-        </form>
+        </h1>
     </main>
 </body>
 
