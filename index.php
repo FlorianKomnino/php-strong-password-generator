@@ -29,16 +29,8 @@ $charactersLength = strlen($characters);
         <h1>
 
             <?php
-            include_once "./functions.php";
 
-            if (isset($_GET['numberOfCharacters']) && preg_match($number_validation_regex, $_GET['numberOfCharacters'])) {
-                for ($i = 0; $i < $_GET['numberOfCharacters']; $i++) {
-                    $generatedPassword = $generatedPassword . "{$characters[(getRandomNumber(0,$charactersLength))]}";
-                }
-                echo $generatedPassword;
-            } elseif (isset($_GET['numberOfCharacters']) && !preg_match($number_validation_regex, $_GET['numberOfCharacters'])) {
-                echo "<h1> Devi inserire un numero corretto. </h1>";
-            }
+            include_once "./functions.php";
 
             ?>
         </h1>
